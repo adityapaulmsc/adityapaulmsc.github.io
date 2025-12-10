@@ -13,37 +13,67 @@
 
         body {
             background: #000;
-            color: white;
+            color: #fff;
             font-family: 'Montserrat', sans-serif;
             line-height: 1.7;
             padding: 40px 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* GOLD DUST / PARTICLES */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, rgba(232,209,143,0.18) 1px, transparent 1px),
+                radial-gradient(circle, rgba(232,209,143,0.12) 1px, transparent 1px);
+            background-size: 140px 140px, 220px 220px;
+            background-position: 0 0, 60px 80px;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+            animation: drift 60s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes drift {
+            0%   { transform: translate3d(0,0,0); }
+            50%  { transform: translate3d(-40px,-20px,0); }
+            100% { transform: translate3d(0,0,0); }
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 1;
             animation: fadeIn 1.4s ease;
         }
 
-        /* GOLD GLOW BEHIND LOGO */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* LOGO WITH GOLD GLOW */
         .logo-wrapper {
             position: relative;
             width: 150px;
             height: 150px;
-            margin: 60px auto;
+            margin: 60px auto 40px auto;
         }
 
         .logo-wrapper::before {
             content: "";
             position: absolute;
-            top: -25px;
-            left: -25px;
-            right: -25px;
-            bottom: -25px;
-            background: radial-gradient(circle, rgba(232,209,143,0.15), rgba(0,0,0,0));
-            filter: blur(30px);
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(circle, rgba(232,209,143,0.20), rgba(0,0,0,0));
+            filter: blur(28px);
         }
 
         .logo {
@@ -56,10 +86,9 @@
             justify-content: center;
             color: #e8d18f;
             font-size: 1rem;
-            opacity: 0.85;
-            z-index: 2;
+            opacity: 0.9;
             position: relative;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.75);
         }
 
         /* TITLE */
@@ -71,9 +100,10 @@
             letter-spacing: 1px;
             position: relative;
             display: inline-block;
+            overflow: hidden;
         }
 
-        /* GOLD UNDERLINE ANIMATION */
+        /* GOLD UNDERLINE */
         h1::after {
             content: "";
             position: absolute;
@@ -82,20 +112,51 @@
             height: 3px;
             width: 0%;
             background: #e8d18f;
-            animation: underline 1.6s ease forwards;
+            animation: underline 1.8s ease forwards;
         }
 
         @keyframes underline {
             to { width: 100%; }
         }
 
-        /* SECTION DIVIDERS */
+        /* LIGHT SWEEP */
+        h1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(232,209,143,0.65), transparent);
+            transform: skewX(-20deg);
+            animation: sweep 3.2s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes sweep {
+            0%   { left: -150%; }
+            60%  { left: 160%; }
+            100% { left: 160%; }
+        }
+
+        /* DIVIDERS */
         .divider {
             width: 70%;
             height: 1px;
             background: linear-gradient(to right, transparent, #e8d18f, transparent);
             margin: 70px auto;
             opacity: 0.4;
+        }
+
+        /* REVEAL ANIMATION (JS-controlled) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* WHO WE ARE */
@@ -106,27 +167,27 @@
             margin-top: 60px;
             margin-bottom: 80px;
             line-height: 1.9;
-            animation: fadeUp 1.4s ease;
         }
 
-        /* IMAGE (parallax floating effect) */
+        /* IMAGE (FLOATING / PARALLAX FEEL) */
         .cinematic-img {
             width: 55%;
             max-width: 350px;
-            border-radius: 6px;
+            border-radius: 8px;
             margin: 0 auto 80px auto;
             display: block;
-            opacity: 0.9;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.95;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.9);
+            animation: float 7s ease-in-out infinite;
         }
 
         @keyframes float {
             0%   { transform: translateY(0px); }
-            50%  { transform: translateY(-12px); }
+            50%  { transform: translateY(-14px); }
             100% { transform: translateY(0px); }
         }
 
-        /* Mission */
+        /* MISSION */
         .mission {
             margin-top: 80px;
             font-size: 1.2rem;
@@ -134,19 +195,17 @@
             font-weight: 300;
             line-height: 1.8;
             margin-bottom: 60px;
-            animation: fadeUp 1.6s ease;
         }
 
-        /* Scripture */
+        /* SCRIPTURE */
         .scripture {
             font-size: 1rem;
             opacity: 0.75;
             margin-bottom: 60px;
             line-height: 1.8;
-            animation: fadeUp 1.8s ease;
         }
 
-        /* Coming Soon Button */
+        /* BUTTON */
         .btn {
             padding: 14px 34px;
             background: #e8d18f;
@@ -156,7 +215,8 @@
             text-decoration: none;
             font-weight: 600;
             transition: 0.3s ease;
-            animation: fadeUp 2.1s ease;
+            display: inline-block;
+            margin-bottom: 40px;
         }
 
         .btn:hover {
@@ -164,43 +224,58 @@
             transform: translateY(-2px);
         }
 
-        /* FOOTER */
+        /* FOOTER / SOCIALS */
         footer {
-            margin-top: 100px;
+            margin-top: 60px;
             font-size: 0.9rem;
-            opacity: 0.5;
-            animation: fadeUp 2.3s ease;
+            opacity: 0.6;
         }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to   { opacity: 1; transform: translateY(0); }
+        .socials {
+            margin-bottom: 18px;
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #c8b877;
         }
 
+        .socials a {
+            color: #e8d18f;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .socials a:hover {
+            text-decoration: underline;
+        }
 
         @media(max-width: 600px) {
             h1 { font-size: 2.6rem; }
             .who-we-are { font-size: 1rem; }
             .cinematic-img { width: 70%; }
+            body { padding: 30px 16px; }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- GOLD DUST LAYER -->
+    <div class="particles"></div>
+
     <div class="container">
 
-        <!-- LOGO WITH GOLD GLOW -->
-        <div class="logo-wrapper">
+        <!-- LOGO PLACEHOLDER WITH GLOW -->
+        <div class="logo-wrapper reveal">
             <div class="logo">Logo Soon</div>
         </div>
 
-        <h1>For His Kingdom Co</h1>
+        <h1 class="reveal">For His Kingdom Co</h1>
 
-        <div class="divider"></div>
+        <div class="divider reveal"></div>
 
-        <!-- WHO WE ARE SECTION -->
-        <div class="who-we-are">
+        <!-- WHO WE ARE -->
+        <div class="who-we-are reveal">
             <p>For His Kingdom Collective is a community of believers, artists, storytellers, worshippers, and leaders united by one purpose: to make Jesus Christ known and to raise up a generation of saints.</p><br>
             <p>We exist to create spaces, through media, music, testimony, formation, and mission, where people encounter the truth, love, and power of God.</p><br>
             <p>We believe creativity is a weapon, testimony is a ministry, and evangelization is our mandate.</p><br>
@@ -208,32 +283,56 @@
             <p>We are ordinary people with a supernatural call: To build His Kingdom, one story at a time.</p>
         </div>
 
-        <!-- IMAGE (correct direct link version) -->
-        <img class="cinematic-img" 
-             src="https://images.unsplash.com/photo-14756%20817994511-9c704f1c5a29?auto=format&fit=crop&w=1200&q=80"
-             alt="Cinematic Portrait">
+        <!-- CINEMATIC IMAGE (local file) -->
+        <img
+            class="cinematic-img reveal"
+            src="mads-schmidt-rasmussen-v0PWN7Z38ag-unsplash.jpg"
+            alt="Cinematic Portrait in Smoky Spotlight"
+        >
 
-        <div class="divider"></div>
+        <div class="divider reveal"></div>
 
         <!-- MISSION -->
-        <div class="mission">
+        <div class="mission reveal">
             “To forge an army of saints by proclaiming the truth and victory of Jesus Christ,
             through bold and faithful evangelization of the Gospel, and by the word of our testimony.”
         </div>
 
         <!-- SCRIPTURE -->
-        <div class="scripture">
+        <div class="scripture reveal">
             Revelation 12:11<br>
             “And they overcame him by the blood of the Lamb and the word of their testimony.”
         </div>
 
-        <a href="#" class="btn">Coming Soon</a>
+        <a href="#" class="btn reveal">Coming Soon</a>
 
-        <footer>
+        <footer class="reveal">
+            <div class="socials">
+                <!-- Replace # with your real links when ready -->
+                <a href="#" target="_blank">Instagram</a> •
+                <a href="#" target="_blank">YouTube</a> •
+                <a href="#" target="_blank">Email</a>
+            </div>
             © 2025 For His Kingdom Co — All for His Glory
         </footer>
 
     </div>
 
+    <!-- Scroll Reveal Script -->
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Uncomment next line if you only want to animate once:
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
