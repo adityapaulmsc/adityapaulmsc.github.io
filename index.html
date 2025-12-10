@@ -17,6 +17,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.7;
             padding: 40px 20px;
+            overflow-x: hidden;
         }
 
         .container {
@@ -26,46 +27,106 @@
             animation: fadeIn 1.4s ease;
         }
 
+        /* GOLD GLOW BEHIND LOGO */
+        .logo-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 60px auto;
+        }
+
+        .logo-wrapper::before {
+            content: "";
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            background: radial-gradient(circle, rgba(232,209,143,0.15), rgba(0,0,0,0));
+            filter: blur(30px);
+        }
+
         .logo {
-            width: 130px;
-            height: 130px;
+            width: 150px;
+            height: 150px;
             border: 2px solid #e8d18f;
             border-radius: 50%;
-            margin: 40px auto 60px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #e8d18f;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            opacity: 0.85;
+            z-index: 2;
+            position: relative;
+            background: rgba(0,0,0,0.6);
         }
 
+        /* TITLE */
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.6rem;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
             color: #e8d18f;
             letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
         }
 
+        /* GOLD UNDERLINE ANIMATION */
+        h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            height: 3px;
+            width: 0%;
+            background: #e8d18f;
+            animation: underline 1.6s ease forwards;
+        }
+
+        @keyframes underline {
+            to { width: 100%; }
+        }
+
+        /* SECTION DIVIDERS */
+        .divider {
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e8d18f, transparent);
+            margin: 70px auto;
+            opacity: 0.4;
+        }
+
+        /* WHO WE ARE */
         .who-we-are {
             font-size: 1.15rem;
             color: #d8d8d8;
             text-align: center;
-            margin-top: 50px;
-            margin-bottom: 70px;
+            margin-top: 60px;
+            margin-bottom: 80px;
             line-height: 1.9;
+            animation: fadeUp 1.4s ease;
         }
 
+        /* IMAGE (parallax floating effect) */
         .cinematic-img {
-            width: 50%;
-            max-width: 320px;
+            width: 55%;
+            max-width: 350px;
             border-radius: 6px;
-            margin: 0 auto 70px auto;
+            margin: 0 auto 80px auto;
             display: block;
-            opacity: 0.85;
+            opacity: 0.9;
+            animation: float 6s ease-in-out infinite;
         }
 
+        @keyframes float {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Mission */
         .mission {
             margin-top: 80px;
             font-size: 1.2rem;
@@ -73,15 +134,19 @@
             font-weight: 300;
             line-height: 1.8;
             margin-bottom: 60px;
+            animation: fadeUp 1.6s ease;
         }
 
+        /* Scripture */
         .scripture {
             font-size: 1rem;
             opacity: 0.75;
             margin-bottom: 60px;
             line-height: 1.8;
+            animation: fadeUp 1.8s ease;
         }
 
+        /* Coming Soon Button */
         .btn {
             padding: 14px 34px;
             background: #e8d18f;
@@ -91,6 +156,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: 0.3s ease;
+            animation: fadeUp 2.1s ease;
         }
 
         .btn:hover {
@@ -98,13 +164,22 @@
             transform: translateY(-2px);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* FOOTER */
+        footer {
+            margin-top: 100px;
+            font-size: 0.9rem;
+            opacity: 0.5;
+            animation: fadeUp 2.3s ease;
         }
 
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+
         @media(max-width: 600px) {
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 2.6rem; }
             .who-we-are { font-size: 1rem; }
             .cinematic-img { width: 70%; }
         }
@@ -115,27 +190,30 @@
 
     <div class="container">
 
-        <div class="logo">Logo Soon</div>
+        <!-- LOGO WITH GOLD GLOW -->
+        <div class="logo-wrapper">
+            <div class="logo">Logo Soon</div>
+        </div>
 
         <h1>For His Kingdom Co</h1>
 
-        <!-- WHO WE ARE -->
+        <div class="divider"></div>
+
+        <!-- WHO WE ARE SECTION -->
         <div class="who-we-are">
-            <p>For His Kingdom Collective is a community of believers, artists, storytellers, worshippers, and leaders united by one purpose: to make Jesus Christ known and to raise up a generation of saints.</p>
-            <br>
-            <p>We exist to create spaces, through media, music, testimony, formation, and mission, where people encounter the truth, love, and power of God.</p>
-            <br>
-            <p>We believe creativity is a weapon, testimony is a ministry, and evangelization is our mandate.</p>
-            <br>
-            <p>Everything we do — retreats, worship nights, films, courses, outreach — is driven by the desire to bring souls back to Jesus and to boldly proclaim His victory.</p>
-            <br>
+            <p>For His Kingdom Collective is a community of believers, artists, storytellers, worshippers, and leaders united by one purpose: to make Jesus Christ known and to raise up a generation of saints.</p><br>
+            <p>We exist to create spaces, through media, music, testimony, formation, and mission, where people encounter the truth, love, and power of God.</p><br>
+            <p>We believe creativity is a weapon, testimony is a ministry, and evangelization is our mandate.</p><br>
+            <p>Everything we do — retreats, worship nights, films, courses, outreach — is driven by the desire to bring souls back to Jesus and to boldly proclaim His victory.</p><br>
             <p>We are ordinary people with a supernatural call: To build His Kingdom, one story at a time.</p>
         </div>
 
-        <!-- CINEMATIC IMAGE -->
+        <!-- IMAGE (correct direct link version) -->
         <img class="cinematic-img" 
-             src="https://images.unsplash.com/photo-1531907700054-3d18151f65c6?auto=format&fit=crop&w=1080&q=80"
+             src="https://images.unsplash.com/photo-14756%20817994511-9c704f1c5a29?auto=format&fit=crop&w=1200&q=80"
              alt="Cinematic Portrait">
+
+        <div class="divider"></div>
 
         <!-- MISSION -->
         <div class="mission">
@@ -150,6 +228,10 @@
         </div>
 
         <a href="#" class="btn">Coming Soon</a>
+
+        <footer>
+            © 2025 For His Kingdom Co — All for His Glory
+        </footer>
 
     </div>
 
