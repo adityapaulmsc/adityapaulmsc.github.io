@@ -1,10 +1,150 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
-  </head>
-  <body style="margin:0; display:flex; justify-content:center; align-items:center; height:100vh; font-family:sans-serif;">
-    <h1>Hello world</h1>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For His Kingdom Co</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Background image */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1950&q=80')
+                no-repeat center center/cover;
+            position: relative;
+        }
+
+        /* Dark cinematic overlay */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            z-index: 2;
+            animation: fadeIn 1.6s ease;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #e8d18f; /* gold tone */
+        }
+
+        .mission {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            color: #e0e0e0;
+        }
+
+        .scripture {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #cfcfcf;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            background: #e8d18f;
+            color: #000;
+            font-size: 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #f0ddac;
+            transform: translateY(-2px);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        /* Future logo placeholder */
+        .logo {
+            width: 110px;
+            height: 110px;
+            border: 2px solid #e8d18f;
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        @media(max-width: 600px) {
+            h1 { font-size: 2.3rem; }
+            .mission { font-size: 1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="content">
+
+            <!-- Logo placeholder -->
+            <div class="logo">
+                Logo Soon
+            </div>
+
+            <h1>For His Kingdom Co</h1>
+
+            <p class="mission">
+                “To forge an army of saints by proclaiming the truth and victory of Jesus Christ,
+                through bold and faithful evangelization of the Gospel, and by the word of our testimony.”
+            </p>
+
+            <p class="scripture">
+                Revelation 12:11<br>
+                “And they overcame him by the blood of the Lamb and the word of their testimony.”
+            </p>
+
+            <a href="#" class="btn">Coming Soon</a>
+        </div>
+    </section>
+</body>
 </html>
